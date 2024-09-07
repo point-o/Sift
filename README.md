@@ -11,6 +11,7 @@ Sift is a web scraping locally hosted application built using Electron and Expre
 - License
 
 ## Installation
+Install the latest version's setup.exe or ->
 
 1. Clone the repository:
     ```bash
