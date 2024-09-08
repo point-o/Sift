@@ -16,28 +16,10 @@ Sift is a web scraping locally hosted application built using Electron and Expre
 - License
 
 ## Installation
-Install the latest version's setup.exe or ->
-
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/point-o/Sift.git
-    ```
-2. Navigate to the project directory:
-    ```bash
-    cd Sift
-    ```
-3. Install the dependencies:
-    ```bash
-    npm install
-    ```
+Install the latest version's setup.exe in versions.
 
 ## Usage
-
-1. Start the application:
-    ```bash
-    npm start
-    ```
-2. Ensure port 3000 is open, this runs the backend.
+1. Ensure port 3000 is open, this runs the backend.
 
 ## Features
 
