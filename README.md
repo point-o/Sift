@@ -2,6 +2,10 @@
 
 Sift is a web scraping locally hosted application built using Electron and Express.
 
+##Currently Working on releasing a stable build...
+- Dev Build runs fine.
+- Recent packaging attempts fail to imitate.
+  
 ## APP DOES NOT CONTAIN A CERTIFICATE
 - Apple will be unable to run this app (unless you use Gatekeeper.)
 - Windows will throw a ton of warnings when you try to install.
