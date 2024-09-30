@@ -1,0 +1,204 @@
+/* index.css */
+
+/* Importing Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* Global Styles */
+body {
+  font-family: 'Poppins', sans-serif; /* Rounded, modern font */
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top left, #e0e0e0, #ffffff); /* Radial gradient background */
+  color: #333;
+}
+
+/* Header Styles */
+header {
+  background: linear-gradient(to right, #111, #555); /* Subtle gradient */
+  color: #ffffff;
+  text-align: center;
+  padding: 2rem 0;
+  border-bottom: 5px solid #444; /* Slightly thicker dark gray accent border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
+}
+
+header h1 {
+  margin: 0;
+  font-size: 3.2rem; /* Larger font size for impact */
+  font-weight: 700; /* Bold font weight */
+  animation: fadeIn 2s ease-out;
+  letter-spacing: 2px; /* Letter spacing for a modern touch */
+}
+
+header h3 {
+  margin: 0.5rem 0;
+  font-size: 2rem; /* Larger font size for emphasis */
+  font-weight: 600; /* Semi-bold font weight */
+  animation: fadeIn 2s ease-out 0.5s;
+  font-style: italic; /* Italicize for style */
+}
+
+header h5 {
+  margin: 0.5rem 0;
+  font-size: 1.3rem; /* Increased font size for readability */
+  font-weight: 600; /* Semi-bold font weight */
+  animation: fadeIn 2s ease-out 1s;
+  color: #ccc; /* Lighter color for a subtle contrast */
+}
+
+/* Main Styles */
+main {
+  padding: 2rem;
+  max-width: 900px; /* Increased width for spaciousness */
+  margin: 2rem auto;
+  background: #ffffff;
+  border-radius: 12px; /* More rounded corners */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow for depth */
+  animation: slideIn 1s ease-out;
+}
+
+/* Form Styles */
+.sand {
+  background: #f2f2f2; /* Slightly warmer background */
+  padding: 2rem;
+  border-radius: 10px; /* Slightly more rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+}
+
+label {
+  display: block;
+  margin: 0.5rem 0 0.3rem;
+  font-weight: 600; /* Semi-bold font weight */
+  color: #333;
+}
+
+textarea,
+input[type="text"] {
+  width: 100%;
+  padding: 0.9rem; /* Slightly larger padding */
+  margin-bottom: 1.2rem;
+  border: 1px solid #ccc; /* Light gray border for softness */
+  border-radius: 6px; /* More rounded corners */
+  transition: border-color 0.3s, box-shadow 0.3s; /* Added box-shadow transition */
+}
+
+textarea:focus,
+input[type="text"]:focus {
+  border-color: #555;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Soft focus shadow */
+}
+
+/* Button Styles */
+button {
+  background: linear-gradient(to right, #333, #666); /* Slightly lighter gradient */
+  color: #ffffff;
+  border: none;
+  padding: 0.9rem 1.6rem;
+  border-radius: 6px; /* More rounded corners */
+  cursor: pointer;
+  font-size: 1.1rem; /* Larger font size */
+  font-weight: 600; /* Semi-bold font weight */
+  margin-top: 0.6rem;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+  background: linear-gradient(to right, #666, #333); /* Reverse gradient on hover */
+  transform: scale(1.05); /* Slightly enlarge button on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
+}
+
+/* CSV Download Button */
+#download-csv {
+  background: linear-gradient(to right, #333, #666); /* Consistent gradient */
+  color: #ffffff;
+  padding: 16px 24px; /* Larger padding */
+  border: none;
+  border-radius: 8px; /* More rounded corners */
+  cursor: pointer;
+  font-size: 1.3em; /* Larger font size */
+  font-weight: 700; /* Bold font weight */
+  margin-top: 30px; /* Larger margin for spacing */
+  transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+}
+
+#download-csv:hover {
+  background: linear-gradient(to right, #666, #333); /* Reverse gradient on hover */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
+  transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+
+/* Loading Bar Styles */
+#loading-bar {
+  background: linear-gradient(to right, #333, #666); /* Consistent gradient */
+  color: #ffffff;
+  padding: 1.2rem;
+  text-align: center;
+  border-radius: 6px; /* More rounded corners */
+  font-size: 1.3rem; /* Larger font size */
+  font-weight: 600; /* Semi-bold font weight */
+  margin-top: 1.5rem;
+  animation: pulse 1.5s infinite; /* Pulsing animation */
+}
+
+/* CSV Preview */
+#csv-preview {
+  margin: 30px auto;
+  padding: 20px;
+  background: #2c2c2c; /* Darker background for contrast */
+  color: #e0e0e0;
+  border: 1px solid #555; /* Slightly lighter border */
+  border-radius: 8px; /* More rounded corners */
+  font-family: 'Courier New', Courier, monospace;
+  white-space: pre-wrap;
+  overflow-x: auto;
+  max-width: 95%;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Enhanced shadow for depth */
+}
+
+/* Footer Styles */
+footer {
+  background: linear-gradient(to right, #555, #111); /* Subtle gradient */
+  color: #ffffff;
+  text-align: center;
+  padding: 1.2rem 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  border-top: 3px solid #444; /* Accent border on top */
+  box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}

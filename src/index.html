@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sift</title>
+  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+  <script defer src="render.js"></script>
+  <script defer src="csvVisualHandle.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Sift</h1>
+    <h3>Scrape what you want from a website.</h3>
+    <h5>Input your website URL(s) below.</h5>
+    <h5>Example: https://www.bbc.com, https://cnn.com</h5>
+  </header>
+  
+  <main>
+    <form class="sand" id="scrape-form">
+      <label for="urls">URLs:</label>
+      <textarea id="urls" name="urls" placeholder="Enter URLs here" aria-label="Enter the URLs of the websites to scrape" required></textarea>
+
+      <label for="filter-keywords">Filter Keywords:</label>
+      <input type="text" id="filter-keywords" name="filter-keywords" placeholder="Keywords to include (comma-separated)" aria-label="Enter keywords to include in the scrape">
+
+      <label for="exclude-keywords">Exclude Keywords:</label>
+      <input type="text" id="exclude-keywords" name="exclude-keywords" placeholder="Keywords to exclude (comma-separated)" aria-label="Enter keywords to exclude from the scrape">
+
+      <button type="submit">Start Scraping!</button>
+    </form>
+
+    <div id="loading-bar" style="display: none;">Scraping...</div>
+
+    <button id="render-csv" aria-label="Render CSV">Render CSV</button>
+    <button id="download-csv" aria-label="Download CSV">Download CSV</button>
+
+    <div id="csv-preview" aria-live="polite"></div>
+  </main>
+
+  <footer>
+    <p>A project made by Ryan Pointer. Ethical considerations in mind.</p>
+  </footer>
+</body>
+</html>
