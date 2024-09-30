@@ -23,7 +23,7 @@ Sift is a web scraping locally hosted application built using Electron and Expre
 Install the latest version's setup.exe in versions.
 
 ## Usage
-1. Ensure port 3000 is open, this runs the backend.
+1. Ensure port 8080 is open, this runs the backend.
 
 ## Features
 
