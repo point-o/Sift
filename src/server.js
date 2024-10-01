@@ -1,8 +1,8 @@
-const express = require('express');
-const { get } = require('axios');
-const { load } = require('cheerio');
-const { createObjectCsvWriter } = require('csv-writer');
-const fs = require('fs');
+const express = require('express'); //backend functionality
+const { get } = require('axios'); //http requests
+const { load } = require('cheerio'); //html parsing
+const { createObjectCsvWriter } = require('csv-writer'); //data writing
+const fs = require('fs'); //file syncing
 
 const app = express();
 const port = 8080;
@@ -24,12 +24,12 @@ app.use(express.json());
 // Define the POST route
 app.post('/send', async (req, res) => {
   try {
-    // Extract properties separately from request body
+    // Extract payloads from request body
     const urls = req.body.urls;
     const excludeWords = req.body.excludeKeywords;
     const includeWords = req.body.filterKeywords;
 
-    // Ensure arrays are assigned properly, with default empty arrays if not present
+    // Ensure arrays are assigned properly, with default empty arrays if not present (important for maintanence)
     const validatedUrls = Array.isArray(urls) ? urls : [];
     const validatedExcludeWords = Array.isArray(excludeWords) ? excludeWords : [];
     const validatedIncludeWords = Array.isArray(includeWords) ? includeWords : [];
@@ -44,10 +44,10 @@ app.post('/send', async (req, res) => {
       throw new Error('Invalid input: `urls` should be a non-empty array');
     }
 
-    // Call the scraping function
+    // Call the scraping function from validated payloads
     await scrapeTitles(validatedUrls, validatedIncludeWords, validatedExcludeWords);
 
-    // Send response to the client
+    // Send response to the front end (any connection will work for this project, whether the front end understands the message or not)
     res.json('Scraping has finished.');
   } catch (error) {
     console.error('Error:', error.message);
@@ -55,23 +55,24 @@ app.post('/send', async (req, res) => {
   }
 });
 
+//listen in to 8080
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
 
-// Fetch robots.txt
+// Fetch robots.txt function
 async function getRobotsTxt(baseUrl) {
   try {
-    const robotsTxtUrl = `${baseUrl}/robots.txt`;
+    const robotsTxtUrl = `${baseUrl}/robots.txt`; //path
     const { data } = await get(robotsTxtUrl);
     return data;
   } catch (error) {
-    console.error(`Failed to fetch robots.txt from ${baseUrl}:`, error.message);
+    console.error(`Failed to fetch robots.txt from ${baseUrl}:`, error.message); //in this case we should move to the next website
     return '';
   }
 }
 
-// Parse robots.txt
+// Parse robots.txt, extract crawl delays, and check if website is in disallowed path
 function parseRobotsTxt(robotsTxt) {
   const disallowedPaths = (robotsTxt.match(/Disallow: (.+)/g) || []).map(line => line.replace('Disallow: ', '').trim());
   const crawlDelayMatch = robotsTxt.match(/Crawl-delay: (\d+)/);
@@ -79,7 +80,7 @@ function parseRobotsTxt(robotsTxt) {
   return { disallowedPaths, crawlDelay };
 }
 
-// Check if URL is disallowed
+// Check if URL is disallowed next to disallowedPaths map
 function isUrlDisallowed(url, disallowedPaths) {
   const urlPath = new URL(url).pathname;
   return disallowedPaths.some(disallowedPath => {
@@ -98,11 +99,12 @@ async function scrapeTitles(urls, includeWords = [], excludeWords = []) {
       try {
         // Check if we're allowed
         const robotsTxt = await getRobotsTxt(new URL(baseUrl).origin);
+
         const { disallowedPaths, crawlDelay } = parseRobotsTxt(robotsTxt);
 
-        // If not allowed, move on to the next URL
-        if (isUrlDisallowed(baseUrl, disallowedPaths)) {
-          console.log(`Scraping disallowed for ${baseUrl} according to robots.txt`);
+        // If not allowed or robots.txt DNE, move on to the next URL
+        if (isUrlDisallowed(baseUrl, disallowedPaths) || (robotsTxt === '')) {
+          console.log(`Scraping disallowed for ${baseUrl} according to robots.txt or by the absence of robots.txt`);
           continue;
         }
 
@@ -146,7 +148,7 @@ async function scrapeTitles(urls, includeWords = [], excludeWords = []) {
       await csvWriter.writeRecords(titles);
       console.log('Titles have been written to titles.csv');
     } else {
-      // Write "no results" message to CSV
+      // Write "no results" default message to CSV
       const noResultsMessage = [{ Title: 'no results, maybe try a different search?', Url: '' }];
       
       // Overwrite existing CSV file with the "no results" message
