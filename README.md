@@ -5,6 +5,8 @@ Sift is a web scraping locally hosted application built using Electron and Expre
 ## Demo
 ["https://www.loom.com/embed/d1001e6426494174b54db2ef70e151fa"](https://www.loom.com/share/80d9953d5846471789548e150d26cde7)
 
+DOWNLOAD VIA VERSIONS ON THE RIGHT.
+CLONING DOES NOT ALWAYS YIELD WORKING BUILDS.
 
 ## Currently Working on releasing a stable build...
 - Dev Build runs fine.
